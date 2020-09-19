@@ -153,6 +153,12 @@
     width: 100%;
 }
 
+.registerName {
+    position: relative;
+    margin: .5rem;
+    width: 100%;
+}
+
 .registerPassword {
     position: relative;
     margin: .5rem;
