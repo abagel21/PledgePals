@@ -5,7 +5,6 @@ import './styles/Home.css';
 const Home = props => {
     return (
         <div className= "homeDiv">
-            <p>Test</p>
         </div>
     )
 }
