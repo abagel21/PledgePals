@@ -7,6 +7,7 @@ import Home from "./components/Home.jsx";
 import Navbar from "./components/navbar/Navbar";
 import Dashboard from './components/Dashboard';
 import Requests from './components/Requests.jsx';
+import SendReq from './components/Sendreq.jsx';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route exact path='/register' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/requests' component={Requests} />
+          <Route exact path='/sendreqs' component={SendReq} />
         </Switch>
       </Fragment>
     </Router>

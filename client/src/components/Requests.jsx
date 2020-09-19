@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import './styles/Requests.css'
 
@@ -8,23 +8,23 @@ const Requests = props => {
     function handleClick(){
         setReqArr(function(prev){
             let img = "../images/medallion_img.png";
-            prev.push(new req(img, "asdf","1/2/2020", img));
-            return prev;
+            return [...prev, new req(img, "asdf","1/2/2020", img)];
         });
         console.log(reqArr);
     }
     return (
         <div className="requestswrapper">
             <button onClick={handleClick}>Add Request</button>
-            {reqArr.map(function(e){
+            <ul>{reqArr.map(function(e){
+                console.log(JSON.stringify(e))
                 return (<div>
                     <img src={e.image} alt="s"/>
                     <h1>{e.name}</h1>
                     <h1>{e.date}</h1>
                     <h1>{e.medal}</h1>
                 </div>
-                )
-            })}
+            )
+        })}</ul>
         </div>
     )
 }

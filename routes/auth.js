@@ -1,11 +1,12 @@
 const express = require("express");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
-const User = require("./models/User");
-const router = express.Router;
+const User = require("../models/User");
+const router = express.Router();
 
 
-router.post("/register", (req, res, next) => {
+router.post("/register", async(req, res, next) => {
+    console.log("register hit");
     req.session.tires = 0;
     try {
         const user = await User.findOne({ email: req.body.email });
@@ -26,7 +27,7 @@ router.post("/register", (req, res, next) => {
     }
 })
 
-router.post("/login", (req, res, next) => {
+router.post("/login", async(req, res, next) => {
     passport.authenticate("local", function(err, user, info) {
         if (err) {
             console.log(error)
@@ -48,3 +49,5 @@ router.post("/login", (req, res, next) => {
     })(req, res, next);
     console.log("login successful");
 })
+
+module.exports = router;

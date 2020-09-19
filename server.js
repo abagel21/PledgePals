@@ -4,6 +4,9 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 const connectDB = require('./config/db');
+const User = require("./models/User");
+const users = require("./routes/auth")
+const { local } = require("./config/passport");
 
 connectDB();
 
@@ -23,6 +26,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+local(passport);
 
 passport.serializeUser((user, done) => {
     done(null, user._id);
@@ -30,7 +34,13 @@ passport.serializeUser((user, done) => {
 
 // deserializes user and attaches user object to req.user from session
 passport.deserializeUser(async(id, done) => {
-
+    try {
+        const user = await User.findById(id);
+        done(null, user);
+    } catch (err) {
+        console.log("deserializing error")
+        return done(err);
+    }
 });
 
 const PORT = process.env.PORT || 80;
@@ -49,6 +59,8 @@ if (process.env.NODE_ENV === "production") {
         }
     });
 }
+
+app.use("/api/auth", users)
 
 let server = app.listen(PORT, () => {
     console.log("Server running on " + PORT);
