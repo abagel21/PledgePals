@@ -1,0 +1,95 @@
+const express = require("express")
+const router = express.Router();
+
+const User = require("../models/User")
+
+/**
+ * Returns the user's friends
+ */
+router.get("/", async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user._id);
+        res.json(user.friends);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+})
+
+/**
+ * Returns the user's friend requests
+ */
+router.get("/requests", async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user._id);
+        const friendRequests = await Promise.all(user.friendRequests.map(async(friend_id) => {
+            const friendUser = await User.findById(friend_id);
+            return friendUser;
+        }))
+        res.json(friendRequests);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+})
+
+/**
+ * Make a friend request
+ */
+router.post("/:user_id", async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user._id);
+        if (user.sentFriendRequests.includes(req.params.user_id.toString()) || user.friends.includes(req.params.user_id.toString())) res.status(400).send();
+        const friend = await User.findById(req.params.user_id);
+        friend.friendRequests.push(user._id);
+        user.sentFriendRequests.push(friend._id);
+        await user.save();
+        await friend.save();
+        res.status(200).send();
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+})
+
+/**
+ * Accept a friend request
+ */
+router.put("/:user_id", async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user._id);
+        if (!user.friendRequests.includes(req.params.user_id.toString())) res.status(400).send();
+        const friend = await User.findById(req.params.user_id);
+        user.friendRequests = user.friendRequests.filter(friend_id => friend_id.toString() != req.params.user_id.toString())
+        friend.sentFriendRequests = friend.sentFriendRequests.filter(friend_id => friend_id.toString() != req.user._id.toString())
+        friend.friends.push(user._id);
+        user.friends.push(friend._id);
+        await user.save();
+        await friend.save();
+        res.status(200).send();
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+})
+
+/**
+ * Reject a friend request
+ */
+router.put("/:user_id", async(req, res, next) => {
+    try {
+        const user = await User.findById(req.user._id);
+        if (!user.friendRequests.includes(req.params.user_id.toString())) res.status(400).send();
+        const friend = await User.findById(req.params.user_id);
+        user.friendRequests = user.friendRequests.filter(friend_id => friend_id.toString() != req.params.user_id.toString())
+        friend.sentFriendRequests = friend.sentFriendRequests.filter(friend_id => friend_id.toString() != req.user._id.toString())
+        await user.save();
+        await friend.save();
+        res.status(200).send();
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server Error");
+    }
+})
+
+module.exports = router;

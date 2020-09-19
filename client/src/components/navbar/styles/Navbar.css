@@ -1,8 +1,9 @@
 .nav_container {
-    position: fixed;
+    position: absolute;
     color: #eee;
     margin: 0;
     padding: 0;
+    top: 0;
     box-sizing: border-box;
     font-size: 1.6rem;
     display: flex;
@@ -17,15 +18,19 @@
 
 .authLinks {
     display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 2rem;
 }
 
 .navButton {
     background-color: lightblue;
-    font-size: 1.5rem;
+    color: white;
+    text-decoration: inherit;
+    font-size: 2rem;
     border: none;
     padding: 1rem;
-    width: 7.5rem;
+    width: 10rem;
     height: 4.5rem;
     border-radius: 10px;
     transition: all .2s;
@@ -40,9 +45,17 @@
 .navButton:hover {
     box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .1);
     background-color: rgb(171, 216, 231);
+    color: rgb(118, 118, 255);
+    text-decoration: none;
 }
 
 .heading {
     font-size: 3rem;
     padding: 4rem;
+    color: white;
+}
+
+.heading:hover {
+    color: rgb(118, 118, 255);
+    text-decoration: none;
 }
