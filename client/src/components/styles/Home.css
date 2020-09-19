@@ -1,9 +1,14 @@
-.homeDiv{
+.home-div{
+    color:white;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
     margin-top: 200px;
+}
+
+body{
+    background-color: black;
 }
 
