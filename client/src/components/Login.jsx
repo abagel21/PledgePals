@@ -1,16 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import "./styles/Auth.css"
 
-const login = props => {
+const Login = props => {
     return (
-        <div>
-            
+        <div className="loginWrapper">
+            <div className="formsContainer">
+                <form action="" className="loginForm">
+                    <h2 className="heading">Login</h2>
+                    <input type="text" className="loginField username" />
+                    <input type="password" className="loginField password"/>
+                    <input type="submit" className="loginSubmit"/>
+                </form>
+            </div>
         </div>
     )
 }
 
-login.propTypes = {
+Login.propTypes = {
 
 }
 
-export default login
+export default Login
