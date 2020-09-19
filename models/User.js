@@ -14,8 +14,12 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    pendingMedallions: [Schema.Types.ObjectId],
     sentMedallions: [Schema.Types.ObjectId],
-    receivedMedallions: [Schema.Types.ObjectId]
+    sentPendingMedallions: [Schema.Types.ObjectId],
+    receivedMedallions: [Schema.Types.ObjectId],
+    completedMedallions: [Schema.Types.ObjectId],
+    completedSentMedallions: [Schema.Types.ObjectId]
 })
 
 const User = new mongoose.model("User", UserSchema);
