@@ -10,9 +10,8 @@ router.post('/create/:recipient', async(req, res, next) => {
     if (req.user == null) res.status(401)
     try {
         const sender = await User.findById(req.user._id);
+        // if (!sender.friends.includes(recipient._id)) res.status(400).send();
         const recipient = await User.findById(req.params.recipient);
-        console.log(sender)
-        console.log(recipient)
         const { content, senderName } = req.body;
         const newMedallion = new Medallion({ sender, recipient, content, senderName });
         sender.sentPendingMedallions.push(newMedallion);
@@ -36,7 +35,8 @@ router.put('/:medallion_id', async(req, res, next) => {
         const medallion = await Medallion.findById(req.params.medallion_id);
         const sender = await User.findById(medallion.sender);
         const recipient = await User.findById(medallion.recipient);
-        sender.sentPendingMedallions = sender.sentPendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
+        const sentPendingMedallions = sender.sentPendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
+        if (sentPendingMedallions.length == sender.sentPendingMedallions) res.status(400).send();
         recipient.pendingMedallions = recipient.pendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
         sender.sentMedallions.push(medallion);
         recipient.receivedMedallions.push(medallion);
