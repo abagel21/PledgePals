@@ -15,7 +15,6 @@ const Requests = props => {
     }
     return (
         <div className="requestswrapper">
-            <img src="../images/medallion_img.png" alt="medal"/>
             <button onClick={handleClick}>Add Request</button>
             {reqArr.map(function(e){
                 return (<div>
@@ -26,7 +25,6 @@ const Requests = props => {
                 </div>
                 )
             })}
-            <ul>{reqArr}</ul>
         </div>
     )
 }
