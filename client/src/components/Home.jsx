@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './styles/Home.css';
 
 const Home = props => {
     return (
-        <div>
-            
+        <div className= "homeDiv">
+            <p>Test</p>
         </div>
     )
 }
