@@ -15,6 +15,33 @@
     transition: color 0.2s, background-color 0.2s;
 }
 
+.authLinks {
+    display: flex;
+    padding: 2rem;
+}
+
+.navButton {
+    background-color: lightblue;
+    font-size: 1.5rem;
+    border: none;
+    padding: 1rem;
+    width: 7.5rem;
+    height: 4.5rem;
+    border-radius: 10px;
+    transition: all .2s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px black;
+}
+
+.navButton:hover {
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .1);
+    background-color: rgb(171, 216, 231);
+}
+
 .heading {
     font-size: 3rem;
     padding: 4rem;
