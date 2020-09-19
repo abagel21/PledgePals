@@ -11,21 +11,17 @@ const Sendreq = props => {
         if(nameInput == ""){
             return;
         }
-<<<<<<< HEAD
         axios.get('/api/friends').then(function(data){
-            // let found = false;
-            // for(let i = 0; i < data.data.friends.length; i++){
-            //     if(data.data.friends[i] == nameInput){
-            //         found = true;
-            //     }
-            // }
-            // if(!found){
-            //     console.log("name not found");
-            // }
+            let found = false;
+            for(let i = 0; i < data.data.friends.length; i++){
+                if(data.data.friends[i] == nameInput){
+                    found = true;
+                }
+            }
+            if(!found){
+                console.log("name not found");
+            }
         });
-=======
-        axios.post('/create/' + nameInput,{content:"sdf"},{headers: {"Content-Type":"application/json"}});
->>>>>>> 1172498876a31094c7100417ac6424887bffc42b
     }
 
     function handleChange(event){
@@ -38,7 +34,7 @@ const Sendreq = props => {
     function initReqArray(userReqs){
         console.log(userReqs.data);
         setCurrReqs(function(prev){
-            return prev;
+            return [userReqs.data];
         })
     }
     useEffect(function(){
@@ -54,7 +50,6 @@ const Sendreq = props => {
                     <button type="submit" className="btn btn-primary" onClick={sendreq}>Send a request</button>
                 </form>
                 <h1>Use this page to send requests to another user!</h1>
-
             </div>
         </div>
 
