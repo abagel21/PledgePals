@@ -5,7 +5,9 @@ import './styles/Home.css';
 const Home = props => {
     return (
         <div className= "homeDiv">
-            <p>Test</p>
+            <div className= "div1">
+                <button>Test</button>
+            </div>
         </div>
     )
 }
