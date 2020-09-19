@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from 'react'
-import axios from 'axios'
-import "./styles/Friends.css"
-import PropTypes from 'prop-types'
+import React, {useEffect, useState} from 'react';
+import axios from 'axios';
+import "./styles/Friends.css";
+import FriendModal from "./FriendModal";
+import $ from 'jquery';
+import PropTypes from 'prop-types';
 
 const Friends = props => {
     useEffect(() => {
@@ -16,20 +18,33 @@ const Friends = props => {
             }
         }
         wrapperFunction();
-    })
+    }, [])
+    const [modalVisible, setModalVisible] = useState("false");
     const [friends, setFriends] = useState(null);
     const [friendRequests, setFriendRequests] = useState(null);
+    const [friendQuery, setFriendQuery] = useState("");
+    const onChange = (e) => {
+        setFriendQuery(e.target.value);
+    }
     return (
-        <div className="friendsPageWrapper">
-            <button className="addFriendButton">Add</button>
+        <div className="friendsPageWrapper" data-status = {modalVisible}>
+            <FriendModal visible = {modalVisible} setVisible = {setModalVisible}/>
+            <div className="friendsBanner">
+                <input className="friendsSearch" type="text" onChange = {e => onChange(e)} value = {friendQuery} placeholder="Search for a friend"/>
+                <img src="../images/friends-bg.png" alt=""/>
+            </div>
             <div className="friendsWrapper">
-                {friends == null ? "No friends yet" : friends.map(friend => (
+            <button className="addFriendButton" id="addFriendButton" onClick = {e => setModalVisible("true")}><label className="addLabel" htmlFor="addFriendButton">+</label></button>
+                {friends == null ? "No friends yet" : friends.filter(friend => {
+                    return friend.name.substring(0, friendQuery.length) == friendQuery
+            }).map(friend => (
                     <div className="friendWrapper">
                         <h4 className="friendName">{friend.name}</h4>
                     </div>
                 ))}
             </div>
             <div className="friendRequestsWrapper">
+                <h3 className="friendRequestsHeader">Friend Requests</h3>
             {friendRequests == null ? "No friend requests yet" : friendRequests.map(friend => (
                     <div className="friendWrapper">
                         <h4 className="friendName">{friend.name}</h4>

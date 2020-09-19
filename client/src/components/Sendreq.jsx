@@ -5,6 +5,7 @@ import axios from 'axios'
 
 const Sendreq = props => {
     const [nameInput, setNameInput] = React.useState("");
+    const [currReqs, setCurrReqs] = React.useState([]);
     function sendreq(event){
         event.preventDefault();
         if(nameInput == ""){
@@ -19,11 +20,18 @@ const Sendreq = props => {
             return x;
         });
     }
-    useEffect(() =>{
-        axios.get("/api/auth").then(function(data){
-            console.log(data.data);
+
+    function initReqArray(userReqs){
+        console.log(userReqs.data);
+        setCurrReqs(function(prev){
+            return prev;
         })
-    });
+    }
+    useEffect(function(){
+        axios.get('/api/medallion/requests').then(function(data){
+            initReqArray(data);
+        })
+    })
     return (
         <div className="sendreq-wrapper">
             <div>
