@@ -51,8 +51,47 @@ router.post("/login", async(req, res, next) => {
     console.log("login successful");
 })
 
+/**
+ * return the current user if signed in
+ */
 router.get("/", (req, res, next) => {
     res.json(req.user);
+})
+
+/**
+ * Return all users
+ */
+router.get("/users", (req, res, next) => {
+    const users = User.find();
+    res.json(users);
+})
+
+/**
+ * Make a friend request
+ */
+router.post("/friends/:user_id", (req, res, next) => {
+    const newFriend = User.findById(req.param.user_id);
+    const user = User.findById(req.user._id);
+    newFriend.friendRequests.push(user._id);
+    user.sentFriendRequests.push(newFriend._id);
+    user.save();
+    newFriend.save();
+    res.status(200);
+})
+
+/**
+ * Accept a friend request
+ */
+router.post("/friends/:user_id", (req, res, next) => {
+    const newFriend = User.findById(req.param.user_id);
+    const user = User.findById(req.user._id);
+    user.friendRequests.filter(id => id.toString() != newFriend._id.toString());
+    newFriend.sentFriendRequests.filter(id => id.toString() != user._id.toString());
+    newFriend.friends.push(user._id);
+    user.friends.push(newFriend._id);
+    user.save();
+    newFriend.save();
+    res.status(200);
 })
 
 module.exports = router;

@@ -6,6 +6,10 @@ const MedallionSchema = new Schema({
         type: Schema.Types.ObjectId,
         required: true
     },
+    senderName: {
+        type: String,
+        required: true
+    },
     recipient: {
         type: Schema.Types.ObjectId,
         required: true
@@ -19,7 +23,8 @@ const MedallionSchema = new Schema({
         default: Date.now
     },
     deadline: {
-        type: Date
+        type: Date,
+        default: Date.now
     }
 })
 

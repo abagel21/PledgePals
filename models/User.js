@@ -14,6 +14,9 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    friendRequests: [Schema.Types.ObjectId],
+    sentFriendRequests: [Schema.Types.ObjectId],
+    friends: [Schema.Types.ObjectId],
     pendingMedallions: [Schema.Types.ObjectId],
     sentMedallions: [Schema.Types.ObjectId],
     sentPendingMedallions: [Schema.Types.ObjectId],
