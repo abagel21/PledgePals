@@ -5,24 +5,8 @@ import axios from 'axios'
 
 const Sendreq = props => {
     const [nameInput, setNameInput] = React.useState("");
-    const [currReqs, setCurrReqs] = React.useState([]);
-    function sendreq(event){
-        event.preventDefault();
-        if(nameInput == ""){
-            return;
-        }
-        axios.get('/api/friends').then(function(data){
-            let found = false;
-            for(let i = 0; i < data.data.friends.length; i++){
-                if(data.data.friends[i] == nameInput){
-                    found = true;
-                }
-            }
-            if(!found){
-                console.log("name not found");
-            }
-        });
-    }
+    const [friendsArr, setFriendsArr] = React.useState([]);
+
 
     function handleChange(event){
         let x = event.target.value
@@ -33,7 +17,7 @@ const Sendreq = props => {
 
     function initReqArray(userReqs){
         console.log(userReqs.data);
-        setCurrReqs(function(prev){
+        setFriendsArr(function(prev){
             return [userReqs.data];
         })
     }
@@ -45,6 +29,11 @@ const Sendreq = props => {
     return (
         <div className="sendreq-wrapper">
             <div>
+                <ul>{friendsArr.map(function(e){
+                    return (
+                        <h1></h1>
+                    )
+                })}</ul>
                 <form>
                     <input onChange={handleChange}></input>
                     <button type="submit" className="btn btn-primary" onClick={sendreq}>Send a request</button>

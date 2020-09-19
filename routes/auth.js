@@ -61,8 +61,8 @@ router.get("/", (req, res, next) => {
 /**
  * Return all users
  */
-router.get("/users", (req, res, next) => {
-    const users = User.find();
+router.get("/users", async(req, res, next) => {
+    const users = await User.find();
     res.json(users);
 })
 
