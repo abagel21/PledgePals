@@ -14,7 +14,6 @@ const Requests = props => {
     }
     return (
         <div className="requestswrapper">
-            <img src="../images/medallion_img.png" alt="medal"/>
             <button onClick={handleClick}>Add Request</button>
             <ul>{reqArr.map(function(e){
                 console.log(JSON.stringify(e))

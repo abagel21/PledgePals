@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './styles/Home.css';
 
-const Home = props => {
+const Sendreq = props => {
     return (
         <div className="home-page">
             <div className="home-div">
@@ -14,8 +13,8 @@ const Home = props => {
     )
 }
 
-Home.propTypes = {
+Sendreq.propTypes = {
 
 }
 
-export default Home
+export default Sendreq;
