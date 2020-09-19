@@ -1,20 +1,25 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import './styles/Requests.css'
+import axios from 'axios';
 
 const Requests = props => {
     const [reqArr, setReqArr] = React.useState([]);
     
-    function handleClick(){
-        setReqArr(function(prev){
-            let img = "../images/medallion_img.png";
-            return [...prev, new req(img, "asdf","1/2/2020", img)];
-        });
-        console.log(reqArr);
-    }
+    // function initializeArray(data){
+    //     let tempArr = [];
+    //     for(let i = 0; i < data.length; i++){
+    //         tempArr.push(new req(data[i].img, data[i].name,data[i].date, img));
+    //     }
+    //     setReqArr(function(prev){
+    //         return [tempArr];
+    //     });
+    // }
+    // useEffect(() =>{
+    //     axios.get('/getdata').then();
+    // })
     return (
         <div className="requestswrapper">
-            <button onClick={handleClick}>Add Request</button>
             <ul>{reqArr.map(function(e){
                 console.log(JSON.stringify(e))
                 return (<div>

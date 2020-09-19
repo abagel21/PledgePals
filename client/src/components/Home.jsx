@@ -7,7 +7,8 @@ const Home = props => {
         <div className="home-page">
             <div className="home-div">
                 <h1>Welcome to Pledge Pals!</h1>
-                <img src="../images/promisedeer.png" alt="asdf"/>
+                <img src="../images/waveback.png" className="wave" alt="asdf"/>
+                <img src="../images/promisedeer.png" className="deer" alt="asdf"/>
             </div>
         </div>
 

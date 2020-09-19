@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './styles/Sendreq.css'
+import axios from 'axios'
 
 const Sendreq = props => {
+    function sendreq(){
+        axios.get();
+    }
     return (
-        <div className="home-page">
-            <div className="home-div">
-                <h1>Welcome to Pledge Pals!</h1>
-                <img src="../images/promisedeer.png" alt="asdf"/>
+        <div className="sendreq-wrapper">
+            <div>
+                <button className="btn btn-primary" onClick={sendreq}>Send a request</button>
             </div>
         </div>
 
