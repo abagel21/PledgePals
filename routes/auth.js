@@ -51,4 +51,8 @@ router.post("/login", async(req, res, next) => {
     console.log("login successful");
 })
 
+router.get("/", (req, res, next) => {
+    res.json(req.user);
+})
+
 module.exports = router;
