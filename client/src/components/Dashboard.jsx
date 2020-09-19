@@ -5,7 +5,7 @@ import "./styles/Dashboard.css"
 const Dashboard = props => {
     return (
         <div className="dashboardWrapper">
-            DASHBOARD
+            
         </div>
     )
 }
