@@ -1,4 +1,7 @@
 const express = require("express");
+const passport = require("passport");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
 const connectDB = require('./config/db');
 
@@ -8,7 +11,44 @@ const app = express();
 // body parsing for express
 app.use(express.json({ extended: false }));
 
+console.log("initializing session");
+app.use(
+    session({
+        secret: "thisisthesecret",
+        cookie: { maxAge: 10800000 },
+        store: new MongoStore({ url: "mongodb+srv://dbuser1:pledgepals@cluster0.etnsm.mongodb.net/PledgePals?retryWrites=true&w=majority" }),
+        resave: true,
+        saveUninitialized: true,
+    })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser((user, done) => {
+    done(null, user._id);
+});
+
+// deserializes user and attaches user object to req.user from session
+passport.deserializeUser(async(id, done) => {
+
+});
+
 const PORT = process.env.PORT || 80;
+
+//production static serving from client side
+if (process.env.NODE_ENV === "production") {
+    console.log("SERVING STATIC FROM CLIENT/BUILD")
+    app.use(express.static("client/build"));
+    console.log(path.resolve(__dirname, "client", "build", "index.html"))
+    app.get("/*", (req, res) => {
+        console.log('sending file')
+        try {
+            res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+        } catch (err) {
+            res.status(500).send('Server Error With Backup React Routing Fix')
+        }
+    });
+}
 
 let server = app.listen(PORT, () => {
     console.log("Server running on " + PORT);
