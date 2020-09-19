@@ -5,6 +5,7 @@ import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 import Home from "./components/Home.jsx";
 import Navbar from "./components/navbar/Navbar"
+import Dashboard from './components/Dashboard'
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/register' component={Register} />
+          <Route exact path='/dashboard' component={Dashboard} />
         </Switch>
       </Fragment>
     </Router>

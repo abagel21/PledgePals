@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 import "./styles/Auth.css"
 
 const Register = props => {
@@ -23,7 +24,7 @@ const Register = props => {
                         <input type="password" className="registerField password" required/>
                         <label>Confirm Password</label>
                     </div>
-                    <input type="submit" className="registerSubmit" onClick = {e => onClick(e)}/>
+                    <Link to="/login" className="registerSubmit">Sign Up</Link>
                 </form>
             </div>
         </div>

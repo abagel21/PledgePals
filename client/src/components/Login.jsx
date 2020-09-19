@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
 import "./styles/Auth.css"
 
 const Login = props => {
@@ -19,7 +20,7 @@ const Login = props => {
                         <input type="password" className="loginField password" required/>
                         <label>Password</label>
                     </div>
-                    <input type="submit" className="loginSubmit" onClick = {e => onClick(e)}/>
+                    <Link to='/dashboard' className="loginSubmit">Log In</Link>
                 </form>
             </div>
         </div>
