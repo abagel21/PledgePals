@@ -37,6 +37,7 @@ router.get("/requests", async(req, res, next) => {
  * Make a friend request
  */
 router.post("/:user_id", async(req, res, next) => {
+    if (!req.user) return res.status(401).send();
     try {
         const user = await User.findById(req.user._id);
         if (user.sentFriendRequests.includes(req.params.user_id.toString()) || user.friends.includes(req.params.user_id.toString())) res.status(400).send();
@@ -47,7 +48,7 @@ router.post("/:user_id", async(req, res, next) => {
         await friend.save();
         res.status(200).send();
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
@@ -76,7 +77,7 @@ router.put("/:user_id", async(req, res, next) => {
 /**
  * Reject a friend request
  */
-router.put("/:user_id", async(req, res, next) => {
+router.delete("/:user_id", async(req, res, next) => {
     try {
         const user = await User.findById(req.user._id);
         if (!user.friendRequests.includes(req.params.user_id.toString())) res.status(400).send();

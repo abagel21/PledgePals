@@ -1,3 +1,7 @@
+button:focus {
+    outline: none;
+}
+
 .friendsPageWrapper {
     display: flex;
     flex-direction: column;
@@ -16,6 +20,14 @@
     cursor: pointer;
 }
 
+.friendsBanner {
+    width: 100%;
+}
+
+.friendsBanner img {
+    width: 100%;
+}
+
 .addLabel {
     position: absolute;
     font-size: 20rem;
@@ -25,6 +37,8 @@
     top: 38%;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    outline: none;
+    border: none;
 }
 
 .addFriendButton:hover {
@@ -34,7 +48,7 @@
 
 .friendsSearch {
     position: absolute;
-    top: 30rem;
+    top: 30%;
     left: 50%;
     width: 50rem;
     font-size: 2.5rem;
@@ -47,10 +61,22 @@
     text-align: center;
 }
 
+@media(min-width: 1550px) {
+    .friendsSearch {
+        top: 35%;
+    }
+}
+
+@media(min-width: 1700px) {
+    .friendsSearch {
+        top: 40%;
+    }
+}
+
 .friendsSearch:focus {
-    border: none!important;
     background-color: rgb(235, 235, 235);
     opacity: 60%;
+    border: 1px white;
     outline: none;
 }
 
@@ -78,4 +104,81 @@
     padding: 1rem;
     padding-left: 3rem;
     padding-right: 3rem;
+}
+
+[data-status='true'] {
+    visibility: visible!important;
+    opacity: 1!important;
+}
+
+.friendModalCover {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .3);
+    z-index: 100;
+    transition: all .3s;
+}
+
+.friendModal {
+    width: 30%;
+    max-height: 60%;
+    background-color: white;
+    position: absolute;
+    z-index: 101;
+    left: 50%;
+    top: 50%;
+    border-radius: 20px;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .2);
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.userSearch {
+    width: 20rem;
+    font-size: 2rem;
+    border: none;
+    border-radius: 15px;
+    padding: 0rem 1rem;
+    background-color: rgba(0, 0, 0, .1);
+    text-align: center;
+}
+
+.userSearch:focus {
+    outline: none;
+    background-color: rgba(0, 0, 0, .075)
+}
+
+.userResults {
+    width: 80%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.userResults button {
+    border: none;
+    background-color: rgba(0, 0, 0, .1);
+    box-shadow: 0 .2rem .2rem rgba(0, 0, 0, .05);
+    border-radius: 10px;
+    width: 100%;
+    font-size: 1.6rem;
+    text-align: center;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.userResults button:hover {
+    box-shadow: 0 .2rem .2rem rgba(0, 0, 0, .1);
+    transform: translate(-1px, -1px);
+}
+
+.userResults button:active {
+    box-shadow: 0 .1rem .1rem rgba(0, 0, 0, .02);
+    transform: translate(1px, 0px);
 }
