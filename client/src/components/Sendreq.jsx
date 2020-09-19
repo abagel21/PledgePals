@@ -11,6 +11,7 @@ const Sendreq = props => {
         if(nameInput == ""){
             return;
         }
+<<<<<<< HEAD
         axios.get('/api/friends').then(function(data){
             // let found = false;
             // for(let i = 0; i < data.data.friends.length; i++){
@@ -22,6 +23,9 @@ const Sendreq = props => {
             //     console.log("name not found");
             // }
         });
+=======
+        axios.post('/create/' + nameInput,{content:"sdf"},{headers: {"Content-Type":"application/json"}});
+>>>>>>> 1172498876a31094c7100417ac6424887bffc42b
     }
 
     function handleChange(event){
