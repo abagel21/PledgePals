@@ -11,7 +11,8 @@ router.post('/create/:recipient', async(req, res, next) => {
     try {
         const sender = await User.findById(req.user._id);
         // if (!sender.friends.includes(recipient._id)) res.status(400).send();
-        const recipient = await User.findById(req.params.recipient);
+        // const recipient = await User.findById(req.params.recipient);
+        const recipient = await User.findOne({ "name": req.params.recipient })
         const { content } = req.body;
         const senderName = sender.name;
         const newMedallion = new Medallion({ sender, recipient, content, senderName });

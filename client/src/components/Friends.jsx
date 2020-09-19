@@ -22,7 +22,7 @@ const Friends = props => {
         <div className="friendsPageWrapper">
             <div className="friendsWrapper">
                 {friends == null ? "No friends yet" : friends.map(friend => (
-                    <div>
+                    <div className="friendWrapper">
 
                     </div>
                 ))}
