@@ -1,6 +1,8 @@
-body{
+body {
     background-color: greenyellow;
 }
-.homeDiv{
+
+.homeDiv {
     width: 500px;
+    position: absolute;
 }
