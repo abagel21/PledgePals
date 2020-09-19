@@ -3,3 +3,79 @@
     flex-direction: column;
     margin-top: 6rem;
 }
+
+.addFriendButton {
+    width: 15rem;
+    height: 15rem;
+    border: 1px gray;
+    border-radius: 50%;
+    background-color: white;
+    transition: all .2s;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.addLabel {
+    position: absolute;
+    font-size: 20rem;
+    color: lightgray;
+    text-align: center;
+    left: 50%;
+    top: 38%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.addFriendButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0rem .5rem .5rem rgba(0, 0, 0, .1);
+}
+
+.friendsSearch {
+    position: absolute;
+    top: 30rem;
+    left: 50%;
+    width: 50rem;
+    font-size: 2.5rem;
+    border: none;
+    border-radius: 15px;
+    opacity: 50%;
+    padding: 0rem 1rem;
+    background-color: lightgray;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.friendsSearch:focus {
+    border: none!important;
+    background-color: rgb(235, 235, 235);
+    opacity: 60%;
+    outline: none;
+}
+
+
+/* .friendsHeading {
+    position: absolute;
+    left: 50%;
+    font-size: 20rem;
+    color: white;
+    margin-top: 3rem;
+    transform: translateX(-50%);
+} */
+
+.friendsWrapper {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.friendRequestsWrapper {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
