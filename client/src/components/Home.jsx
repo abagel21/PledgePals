@@ -6,7 +6,7 @@ const Home = props => {
     return (
         <div className= "homeDiv">
             <div className= "div1">
-                <button>Test</button>
+                <h1>Welcome to Pledge Pals!</h1>
             </div>
         </div>
     )
