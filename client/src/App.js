@@ -9,12 +9,6 @@ import Navbar from "./components/navbar/Navbar"
 
 function App() {
   return (
-<<<<<<< HEAD
-    <div className="App">
-      <Navbar />
-      <Home />
-    </div>
-=======
     <Router>
       <Fragment>
         <Navbar />
@@ -25,7 +19,6 @@ function App() {
         </Switch>
       </Fragment>
     </Router>
->>>>>>> 538c919f57e23cf92f0c5d6538d4fdb3cfabd8fd
   );
 }
 
