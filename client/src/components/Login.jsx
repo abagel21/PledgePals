@@ -14,7 +14,7 @@ const Login = props => {
     }
     const onSubmit = (e) => {
         e.preventDefault();
-        axios.get("/api/auth/login")
+        axios.post("api/auth/login", JSON.stringify(formData), {headers: {"Content-Type": "application/json"}})
     }
     return (
         <div className="loginWrapper" onSubmit = {e => onSubmit(e)}>
@@ -22,14 +22,14 @@ const Login = props => {
                 <form action="" className="loginForm">
                     <h2 className="heading">Login</h2>
                     <div className="loginEmail">
-                        <input type="text" className="loginField username" onChange = {e =>onChange(e)} value = {formData.email} name="email" required/>
+                        <input type="text" className="loginField" onChange={e =>onChange(e)} name="email" value = {formData.email} required/>
                         <label>Email Address</label>
                     </div>
                     <div className="loginPassword">
-                        <input type="password" className="loginField password" onChange = {e =>onChange(e)} value = {formData.password} name="password"  required/>
+                        <input type="password" className="loginField" onChange={e =>onChange(e)} name="password" value={formData.password} required/>
                         <label>Password</label>
                     </div>
-                    <input type="submit" className="loginSubmit">Log In</input>
+                    <input type="submit" className="loginSubmit" value="Log In"/>
                 </form>
             </div>
         </div>
