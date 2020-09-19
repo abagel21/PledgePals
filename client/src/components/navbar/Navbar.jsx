@@ -5,7 +5,7 @@ import "./styles/Navbar.css"
 const Navbar = props => {
     return (
         <div className="nav_container">
-            
+            <h2 className="heading title">Pledge Pals</h2>
         </div>
     )
 }
