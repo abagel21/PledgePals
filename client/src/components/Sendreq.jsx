@@ -9,7 +9,7 @@ const Sendreq = props => {
         event.preventDefault();
         if(nameInput == ""){
             return;
-        })
+        }
         axios.post('/create/' + nameInput,{content:"sdf"},{headers: {"Content-Type":"application/json"}});
     }
 
