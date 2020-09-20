@@ -24,7 +24,7 @@ router.post('/create/:recipient', async(req, res, next) => {
         await recipient.save();
         res.json(newMedallion);
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
@@ -50,7 +50,7 @@ router.put('/:medallion_id', async(req, res, next) => {
             return await Medallion.findById(medal);
         })));
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
@@ -74,7 +74,7 @@ router.put('/complete/:medallion_id', async(req, res, next) => {
             return await Medallion.findById(medal);
         })));
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
@@ -96,7 +96,7 @@ router.delete('/:medallion_id', async(req, res, next) => {
             return await Medallion.findById(medal);
         })));
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
@@ -133,7 +133,7 @@ router.get('/pending', async(req, res, next) => {
             }))
             res.json(medallions);
         } catch (err) {
-            console.error(err.message);
+            console.error(err);
             res.status(500).send("Server Error");
         }
     })
@@ -153,7 +153,7 @@ router.get('/', async(req, res, next) => {
             console.log(medallions);
             res.json(medallions);
         } catch (err) {
-            console.error(err.message);
+            console.error(err);
             res.status(500).send("Server Error");
         }
     })
@@ -171,7 +171,7 @@ router.get('/completed', async(req, res, next) => {
             }))
             res.json(medallions);
         } catch (err) {
-            console.error(err.message);
+            console.error(err);
             res.status(500).send("Server Error");
         }
     })
@@ -190,7 +190,7 @@ router.get('/sent', async(req, res, next) => {
             console.log(medallions)
             res.json(medallions);
         } catch (err) {
-            console.error(err.message);
+            console.error(err);
             res.status(500).send("Server Error");
         }
     })
@@ -208,7 +208,7 @@ router.get('/sent/completed', async(req, res, next) => {
         }))
         res.json(medallions);
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })

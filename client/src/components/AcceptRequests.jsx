@@ -24,7 +24,7 @@ const AcceptRequests = (props) => {
   return (
     <div className="medallionPageWrapper">
       <div className="banner">
-        <img src="../images/requests-des.png" alt="" />
+        <img src="../images/requests-des-med.png" alt="" />
       </div>
       {reqArr.length > 0 ? (
         <div className="requestswrapper">
