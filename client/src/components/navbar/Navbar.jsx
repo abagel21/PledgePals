@@ -21,8 +21,8 @@ const Navbar = props => {
             <img class="logo" src="../../images/logo.png" alt="logo" /> 
             <nav>
                 {user ? <ul class="nav_links">
-                    <li><Link to="/requests">Medallions</Link></li>
                     <li><Link to="/sendreq">Make Promises</Link></li>
+                    <li><Link to="/requests">Keep Promises</Link></li>
                     <li><Link to="/request_accept">Accept Promises</Link></li>
                     <li><Link to="/friends">Friends</Link></li>
                 </ul> : <ul class="nav_links">

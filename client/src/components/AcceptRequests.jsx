@@ -15,27 +15,22 @@ const AcceptRequests = (props) => {
   }, []);
   const [reqArr, setReqArr] = React.useState([]);
 
-  // function initializeArray(data){
-  //     let tempArr = [];
-  //     for(let i = 0; i < data.length; i++){
-  //         tempArr.push(new req(data[i].img, data[i].name,data[i].date, img));
-  //     }
-  //     setReqArr(function(prev){
-  //         return [tempArr];
-  //     });
-  // }
-  // useEffect(() =>{
-  //     axios.get('/getdata').then();
-  // })
+  async function acceptMedallion(e) {
+    const res = await axios.put(`/api/medallion/${e.target.name}`)
+    console.log(res.data);
+    setReqArr([...res.data]);
+    console.log(reqArr);
+  }
   return (
     <div className="medallionPageWrapper">
       <div className="banner">
-        <img src="../images/requests-des.png" alt="" />
+        <img src="../images/requests-des-med.png" alt="" />
       </div>
       {reqArr.length > 0 ? (
         <div className="requestswrapper">
           {reqArr.map(function (e) {
             console.log(JSON.stringify(e));
+            console.log(e._id);
             return (
               <div className="medallion">
                 <div className="medallion_inner">
@@ -62,7 +57,8 @@ const AcceptRequests = (props) => {
                     <h1>{e.medal}</h1>
                   </div>
                   <div className="back">
-                    <button className="complete">Complete</button>
+                    <button className="accept" onClick = {e => acceptMedallion(e)}  name={e._id}>Accept</button>
+                    <button className="reject" onClick = {e => acceptMedallion(e)}  name={e._id}>Reject</button>
                   </div>
                 </div>
               </div>

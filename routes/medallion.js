@@ -38,16 +38,19 @@ router.put('/:medallion_id', async(req, res, next) => {
         const medallion = await Medallion.findById(req.params.medallion_id);
         const sender = await User.findById(medallion.sender);
         const recipient = await User.findById(medallion.recipient);
-        const sentPendingMedallions = sender.sentPendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
+        const sentPendingMedallions = await sender.sentPendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
         if (sentPendingMedallions.length == sender.sentPendingMedallions) res.status(400).send();
-        recipient.pendingMedallions = recipient.pendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
-        sender.sentMedallions.push(medallion);
-        recipient.receivedMedallions.push(medallion);
+        sender.sentPendingMedallions = sentPendingMedallions;
+        recipient.pendingMedallions = await recipient.pendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
+        await sender.sentMedallions.push(medallion._id);
+        await recipient.receivedMedallions.push(medallion._id);
         await sender.save();
         await recipient.save();
-        res.status(200).json(req.user.pendingMedallions);
+        res.status(200).json(await Promise.all(await recipient.pendingMedallions.map(async medal => {
+            return await Medallion.findById(medal);
+        })));
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
@@ -61,15 +64,17 @@ router.put('/complete/:medallion_id', async(req, res, next) => {
         const medallion = await Medallion.findById(req.params.medallion_id);
         const sender = await User.findById(medallion.sender);
         const recipient = await User.findById(medallion.recipient);
-        sender.sentMedallions = sender.sentMedallions.filter(x => x._id.toString() != req.params.medallion_id);
-        recipient.receivedMedallions = recipient.receivedMedallions.filter(x => x._id.toString() != req.params.medallion_id);
-        sender.completedSentMedallions.push(medallion);
-        recipient.completedMedallions.push(medallion);
+        sender.sentMedallions = await sender.sentMedallions.filter(x => x._id.toString() != req.params.medallion_id);
+        recipient.receivedMedallions = await recipient.receivedMedallions.filter(x => x._id.toString() != req.params.medallion_id);
+        await sender.completedSentMedallions.push(medallion._id);
+        await recipient.completedMedallions.push(medallion._id);
         await sender.save();
         await recipient.save();
-        res.status(200).json(req.user.receivedMedallions);
+        res.status(200).json(await Promise.all(await req.user.receivedMedallions.map(async medal => {
+            return await Medallion.findById(medal);
+        })));
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
@@ -87,9 +92,11 @@ router.delete('/:medallion_id', async(req, res, next) => {
         recipient.pendingMedallions = recipient.pendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
         await sender.save();
         await recipient.save();
-        res.status(200).send();
+        res.status(200).json(await Promise.all(await recipient.pendingMedallions.map(async medal => {
+            return await Medallion.findById(medal);
+        })));
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
@@ -126,7 +133,7 @@ router.get('/pending', async(req, res, next) => {
             }))
             res.json(medallions);
         } catch (err) {
-            console.error(err.message);
+            console.error(err);
             res.status(500).send("Server Error");
         }
     })
@@ -146,7 +153,7 @@ router.get('/', async(req, res, next) => {
             console.log(medallions);
             res.json(medallions);
         } catch (err) {
-            console.error(err.message);
+            console.error(err);
             res.status(500).send("Server Error");
         }
     })
@@ -164,7 +171,7 @@ router.get('/completed', async(req, res, next) => {
             }))
             res.json(medallions);
         } catch (err) {
-            console.error(err.message);
+            console.error(err);
             res.status(500).send("Server Error");
         }
     })
@@ -183,7 +190,7 @@ router.get('/sent', async(req, res, next) => {
             console.log(medallions)
             res.json(medallions);
         } catch (err) {
-            console.error(err.message);
+            console.error(err);
             res.status(500).send("Server Error");
         }
     })
@@ -201,7 +208,7 @@ router.get('/sent/completed', async(req, res, next) => {
         }))
         res.json(medallions);
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
