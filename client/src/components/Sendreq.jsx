@@ -32,7 +32,7 @@ const Sendreq = props => {
                 <ul>{friendsArr.map(function(e){
                     return (
                         <div>
-                        {console.log(e.name)}
+                        {console.log(e)}
                         <button type="submit" className="btn btn-primary" >Send a request</button>
                         </div>
                     )
