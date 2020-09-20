@@ -10,7 +10,6 @@
     position: absolute;
 }
 
-<<<<<<< HEAD
 .wave{
     position:absolute;
     left:-200px;
@@ -18,10 +17,9 @@
 }
 .deer{
     position: absolute;
-    top: 20%;
+    top: 29%;
     left: 30%;
 }
-=======
 .homeHeading {
     color: transparent;
     font-size: 7rem;
@@ -32,4 +30,3 @@
     background: linear-gradient(to right, rgb(66, 66, 255), rgb(151, 106, 255));
     -webkit-background-clip: text;
 }
->>>>>>> 7bfe9d9d1ba5d88d381d0052594d0d03c5f9a7e5
