@@ -138,8 +138,9 @@ router.get('/', async(req, res, next) => {
             const user = await User.findById(req.user._id);
             const medallions = await Promise.all(user.receivedMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
+                medal.name = user.name;
                 console.log(medal);
-                return {...medal, "name": user.name };
+                return medal;
             }))
             console.log(medallions);
             res.json(medallions);
