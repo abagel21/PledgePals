@@ -12,3 +12,13 @@
     position: absolute;
 }
 
+.wave{
+    position:absolute;
+    left:-200px;
+    top:20%;
+}
+.deer{
+    position: absolute;
+    top: 20%;
+    left: 30%;
+}
