@@ -9,6 +9,7 @@ import Dashboard from './components/Dashboard';
 import Requests from './components/Requests.jsx';
 import SendReq from './components/Sendreq.jsx';
 import Friends from "./components/Friends.jsx";
+import AcceptRequests from './components/AcceptRequests.jsx';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route exact path='/register' component={Register} />
           <Route exact path='/dashboard' component={Dashboard} />
           <Route exact path='/requests' component={Requests} />
+          <Route exact path = "/request_accept" component={AcceptRequests} />
           <Route exact path='/sendreq' component={SendReq} />
           <Route exact path = "/friends" component={Friends} />
         </Switch>

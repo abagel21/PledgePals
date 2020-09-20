@@ -20,13 +20,16 @@ const Navbar = props => {
         <div className="navWrapper">
             <img class="logo" src="../../images/logo.png" alt="logo" /> 
             <nav>
-                <ul class="nav_links">
-                    <li><a href="#">Requests</a></li>
-                    <li><a href="#">Users</a></li>
-                    <li><a href="#">Friends</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Sign up</a></li>
-                </ul>
+                {user ? <ul class="nav_links">
+                    <li><Link to="/requests">Medallions</Link></li>
+                    <li><Link to="/">Make Promises</Link></li>
+                    <li><Link to="/request_accept">Accept Promises</Link></li>
+                    <li><Link to="/friends">Friends</Link></li>
+                </ul> : <ul class="nav_links">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/register">Sign up</Link></li>
+                </ul>}
             </nav>
             <img class="navBanner" src="../../../images/banner-item.png"alt="banner" />
         </div>

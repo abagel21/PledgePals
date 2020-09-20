@@ -2,11 +2,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+}
+
+.medallionPageWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .banner {
     width: 100%;
-    margin-top: 4rem;
+    margin-top: 0rem;
 }
 
 .banner img {
@@ -14,9 +22,47 @@
 }
 
 .medallion {
+    position: relative;
     margin: 3rem;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .15);
     border-radius: 1rem;
+    background-color: transparent;
+    perspective: 1000px;
+    width: 40%;
+    height: 22rem;
+}
+
+.medallion_inner {
+    position: relative;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .15);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.medallion:hover .medallion_inner {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.front {
+    background-color: white;
+}
+
+.back {
+    background-color: white;
+    color: white;
+    transform: rotateY(180deg);
 }
 
 .flexWrapper {
@@ -41,8 +87,10 @@
     width: 15rem;
     height: 15rem;
     text-align: center;
-    position: relative;
-    margin: 0rem 2rem;
+    /* position: relative;
+    margin: 0rem 2rem; */
+    background-image: url("pfp_1.png");
+    background-size: cover;
 }
 
 .medallion__name {
@@ -51,4 +99,43 @@
     width: 15rem;
     top: 15rem;
     left: 0rem;
+}
+
+.medallionContent {
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.pendingError {
+    margin-top: 5rem;
+    font-size: 4rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .1);
+    border-radius: 15px;
+    padding: 1rem;
+    color: gray;
+    width: 45rem;
+    text-align: center;
+}
+
+.complete {
+    font-size: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    border: none;
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .1);
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+.complete:hover {
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .2);
+    transform: translate(-50%, -51%);
+}
+
+.complete:active {
+    box-shadow: 0 .25rem .25rem rgba(0, 0, 0, .05);
+    transform: translate(-50%, -49%);
 }
