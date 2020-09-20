@@ -100,11 +100,11 @@ router.get('/requests', async(req, res, next) => {
         if (req.user == null) res.status(401)
         try {
             const user = await User.findById(req.user._id);
-            const medallions = user.pendingMedallions.map(async(medallion_id) => {
+            const medallions = await Promise.all(user.pendingMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
                 console.log(medal);
-                return medal;
-            })
+                return {...medal, "name": user.name };
+            }))
             res.json(medallions);
         } catch (err) {
             console.error(err.message);
@@ -118,11 +118,11 @@ router.get('/pending', async(req, res, next) => {
         if (req.user == null) res.status(401)
         try {
             const user = await User.findById(req.user._id);
-            const medallions = user.sentPendingMedallions.map(async(medallion_id) => {
+            const medallions = await Promise.all(user.sentPendingMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
                 console.log(medal);
-                return medal;
-            })
+                return {...medal, "name": user.name };
+            }))
             res.json(medallions);
         } catch (err) {
             console.error(err.message);
@@ -136,11 +136,12 @@ router.get('/', async(req, res, next) => {
         if (req.user == null) res.status(401)
         try {
             const user = await User.findById(req.user._id);
-            const medallions = user.receivedMedallions.map(async(medallion_id) => {
+            const medallions = await Promise.all(user.receivedMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
                 console.log(medal);
-                return medal;
-            })
+                return {...medal, "name": user.name };
+            }))
+            console.log(medallions);
             res.json(medallions);
         } catch (err) {
             console.error(err.message);
@@ -154,11 +155,11 @@ router.get('/completed', async(req, res, next) => {
         if (req.user == null) res.status(401)
         try {
             const user = await User.findById(req.user._id);
-            const medallions = user.completedMedallions.map(async(medallion_id) => {
+            const medallions = await Promise.all(user.completedMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
                 console.log(medal);
-                return medal;
-            })
+                return {...medal, "name": user.name };
+            }))
             res.json(medallions);
         } catch (err) {
             console.error(err.message);
@@ -175,7 +176,7 @@ router.get('/sent', async(req, res, next) => {
             const medallions = await Promise.all(user.sentMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
                 console.log(medal);
-                return medal;
+                return {...medal, "name": user.name };
             }))
             console.log(medallions)
             res.json(medallions);
@@ -191,11 +192,11 @@ router.get('/sent/completed', async(req, res, next) => {
     if (req.user == null) res.status(401)
     try {
         const user = await User.findById(req.user._id);
-        const medallions = user.completedSentMedallions.map(async(medallion_id) => {
+        const medallions = await Promise.all(user.completedSentMedallions.map(async(medallion_id) => {
             const medal = await Medallion.findById(medallion_id)
             console.log(medal);
-            return medal;
-        })
+            return {...medal, "name": user.name };
+        }))
         res.json(medallions);
     } catch (err) {
         console.error(err.message);

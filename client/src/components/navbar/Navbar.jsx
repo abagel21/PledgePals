@@ -21,7 +21,7 @@ const Navbar = props => {
             <Link to="/" className="heading title">Pledge Pals</Link>
             <div className="authLinks">
             {user ? (<div className="authLinks">
-            <Link className="navButton sendreqbutton" to = "/sendreq">Promises</Link>
+            <Link className="navButton sendreqbutton" to = "/sendreq">Send Promises</Link>
             <Link className="navButton friends" to = "/friends">Friends</Link>
                 <Link className="navButton requestbutton" to = "/requests">Requests</Link>
             </div>) : (<div className="authLinks">

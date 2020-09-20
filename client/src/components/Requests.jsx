@@ -4,6 +4,15 @@ import './styles/Requests.css'
 import axios from 'axios';
 
 const Requests = props => {
+    useEffect(() => {
+        async function wrapperFunc() {
+            console.log("GETTING MEDALLIONS")
+            const res = await axios.get("/api/medallion");
+            console.log(res.data)
+            setReqArr(res.data);
+        }
+        wrapperFunc();
+    }, [])
     const [reqArr, setReqArr] = React.useState([]);
     
     // function initializeArray(data){
@@ -19,17 +28,24 @@ const Requests = props => {
     //     axios.get('/getdata').then();
     // })
     return (
+        <div className="medallionPageWrapper">
+            <div className="banner">
+                <img src="../images/requests-des.png" alt=""/>
+            </div>
         <div className="requestswrapper">
-            <ul>{reqArr.map(function(e){
+            {reqArr.map(function(e){
                 console.log(JSON.stringify(e))
-                return (<div>
-                    <img src={e.image} alt="s"/>
-                    <h1>{e.name}</h1>
+                return (<div className="medallion">
+                    <img src="../images/medallion_img.png" alt="s"/>
+                    <div className="friendWrapper" name={e._id}>
+                  <label className="friendName">{e.name}</label>
+                </div>
                     <h1>{e.date}</h1>
                     <h1>{e.medal}</h1>
                 </div>
             )
-        })}</ul>
+        })}
+        </div>
         </div>
     )
 }
