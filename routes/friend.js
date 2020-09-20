@@ -65,13 +65,16 @@ router.put("/:user_id", async(req, res, next) => {
         const user = await User.findById(req.user._id);
         if (!user.friendRequests.includes(req.params.user_id.toString())) res.status(400).send();
         const friend = await User.findById(req.params.user_id);
-        user.friendRequests = user.friendRequests.filter(friend_id => friend_id.toString() != req.params.user_id.toString())
-        friend.sentFriendRequests = friend.sentFriendRequests.filter(friend_id => friend_id.toString() != req.user._id.toString())
-        friend.friends.push(user._id);
-        user.friends.push(friend._id);
+        user.friendRequests = await user.friendRequests.filter(friend_id => friend_id.toString() != req.params.user_id.toString())
+        friend.sentFriendRequests = await friend.sentFriendRequests.filter(friend_id => friend_id.toString() != req.user._id.toString())
+        await friend.friends.push(user._id);
+        await user.friends.push(friend._id);
         await user.save();
         await friend.save();
-        res.status(200).send();
+        res.status(200).json(await Promise.all(user.friendRequests.map(async(friend_id) => {
+            const friendUser = await User.findById(friend_id);
+            return friendUser;
+        })));
     } catch (err) {
         console.error(err);
         res.status(500).send("Server Error");
@@ -86,11 +89,14 @@ router.delete("/:user_id", async(req, res, next) => {
         const user = await User.findById(req.user._id);
         if (!user.friendRequests.includes(req.params.user_id.toString())) res.status(400).send();
         const friend = await User.findById(req.params.user_id);
-        user.friendRequests = user.friendRequests.filter(friend_id => friend_id.toString() != req.params.user_id.toString())
-        friend.sentFriendRequests = friend.sentFriendRequests.filter(friend_id => friend_id.toString() != req.user._id.toString())
+        user.friendRequests = await user.friendRequests.filter(friend_id => friend_id.toString() != req.params.user_id.toString())
+        friend.sentFriendRequests = await friend.sentFriendRequests.filter(friend_id => friend_id.toString() != req.user._id.toString())
         await user.save();
         await friend.save();
-        res.status(200).send();
+        res.status(200).json(await Promise.all(user.friendRequests.map(async(friend_id) => {
+            const friendUser = await User.findById(friend_id);
+            return friendUser;
+        })));
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");

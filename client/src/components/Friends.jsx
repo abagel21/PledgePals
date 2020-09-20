@@ -4,6 +4,7 @@ import "./styles/Friends.css";
 import FriendModal from "./FriendModal";
 
 const Friends = (props) => {
+  const [friendRequests, setFriendRequests] = useState(null);
   useEffect(() => {
     async function wrapperFunction() {
       try {
@@ -17,10 +18,9 @@ const Friends = (props) => {
       }
     }
     wrapperFunction();
-  }, []);
+  }, [friendRequests]);
   const [modalVisible, setModalVisible] = useState("false");
   const [friends, setFriends] = useState(null);
-  const [friendRequests, setFriendRequests] = useState(null);
   const [friendQuery, setFriendQuery] = useState("");
   const onChange = (e) => {
     setFriendQuery(e.target.value);
@@ -28,13 +28,13 @@ const Friends = (props) => {
 
   const acceptRequest = async (e) => {
     console.log(e.target.parentNode.getAttribute("name"));
-    await axios.put(`/api/friends/${e.target.parentNode.getAttribute("name")}`);
-    window.location.reload();
+    const res = await axios.put(`/api/friends/${e.target.parentNode.getAttribute("name")}`);
+    setFriendRequests(res.data);
 };
   const rejectRequest = async (e) => {
     console.log(e.target.parentNode.getAttribute("name"));
-    await axios.delete(`/api/friends/${e.target.parentNode.getAttribute("name")}`);
-    window.location.reload();
+    const res = await axios.delete(`/api/friends/${e.target.parentNode.getAttribute("name")}`);
+    setFriendRequests(res.data);
   };
   return (
     <div className="friendsPageWrapper" data-status={modalVisible}>
@@ -80,7 +80,7 @@ const Friends = (props) => {
       <div className="friendRequestsWrapper">
         <h3 className="friendRequestsHeader">REQUESTS</h3>
         <div className="friendRequests">
-          {friendRequests == null ? (
+          {friendRequests == null || friendRequests.length == 0 ? (
             <h1 className="error">You don't have any friend requests yet.</h1>
           ) : (
             friendRequests.map((friend) => (
