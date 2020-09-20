@@ -15,18 +15,24 @@ const Requests = props => {
     }, [])
     const [reqArr, setReqArr] = React.useState([]);
     
-    // function initializeArray(data){
-    //     let tempArr = [];
-    //     for(let i = 0; i < data.length; i++){
-    //         tempArr.push(new req(data[i].img, data[i].name,data[i].date, img));
-    //     }
-    //     setReqArr(function(prev){
-    //         return [tempArr];
-    //     });
-    // }
-    // useEffect(() =>{
-    //     axios.get('/getdata').then();
-    // })
+    function initializeArray(data){
+        console.log(data);
+        let tempArr = [];
+        if(data.data.length == 0){
+            return;
+        }
+        for(let i = 0; i < data.data.length; i++){
+            // tempArr.push(new req(data.data[i].img, data.data[i].name,data.data[i].date, img));
+        }
+        setReqArr(function(prev){
+            return [tempArr];
+        });
+    }
+    useEffect(() =>{
+        axios.get('/api/medallion/requests').then(function(data){
+            initializeArray(data);
+        });
+    })
     return (
         <div className="medallionPageWrapper">
             <div className="banner">

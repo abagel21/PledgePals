@@ -17,26 +17,29 @@ const Sendreq = props => {
 
     function initReqArray(userReqs){
         console.log(userReqs.data);
-        setFriendsArr(function(prev){
-            return [userReqs.data];
-        })
+        let temp = userReqs.data;
+        setFriendsArr([...friendsArr, temp]
+            )
     }
     useEffect(function(){
-        axios.get('/api/medallion/requests').then(function(data){
+        axios.get('/api/friends').then(function(data){
             initReqArray(data);
         })
-    })
+    }, []);
     return (
         <div className="sendreq-wrapper">
             <div>
                 <ul>{friendsArr.map(function(e){
                     return (
-                        <h1></h1>
+                        <div>
+                        {console.log(e)}
+                        <button type="submit" className="btn btn-primary" >Send a request</button>
+                        </div>
                     )
                 })}</ul>
                 <form>
                     <input onChange={handleChange}></input>
-                    <button type="submit" className="btn btn-primary" onClick={sendreq}>Send a request</button>
+                    <button type="submit" className="btn btn-primary" >Send a request</button>
                 </form>
                 <h1>Use this page to send requests to another user!</h1>
             </div>
