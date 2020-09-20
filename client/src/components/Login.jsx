@@ -25,7 +25,7 @@ const Login = props => {
     }
     return (
         <div>
-        {user ? (<Redirect to="/dashboard"/>) : (<div className="loginWrapper" onSubmit = {e => onSubmit(e)}>
+        {user ? (<Redirect to="/friends"/>) : (<div className="loginWrapper" onSubmit = {e => onSubmit(e)}>
         <div className="formsContainer">
             <form action="" className="loginForm">
                 <h2 className="heading">Login</h2>
