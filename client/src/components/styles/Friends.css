@@ -5,6 +5,7 @@ button:focus {
 .friendsPageWrapper {
     display: flex;
     flex-direction: column;
+    margin-bottom: 5rem;
 }
 
 .addFriendButton {
@@ -17,6 +18,7 @@ button:focus {
     position: relative;
     cursor: pointer;
     border: 1px solid lightgray;
+    margin-bottom: 7.5rem;
 }
 
 .friendsBanner {
@@ -201,6 +203,7 @@ button:focus {
     text-align: center;
     position: relative;
     margin: 0rem 2rem;
+    background-image: url("pfp_1.png");
 }
 
 .friendRequests div .friendName {
@@ -269,6 +272,7 @@ button:focus {
     position: relative;
     margin: 0rem 2rem;
     background-image: url("pfp_1.png");
+    margin-bottom: 7.5rem;
 }
 
 .friendsWrapper div .friendName {
