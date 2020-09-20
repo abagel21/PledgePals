@@ -21,10 +21,16 @@ const AcceptRequests = (props) => {
     setReqArr([...res.data]);
     console.log(reqArr);
   }
+  async function rejectMedallion(e) {
+    const res = await axios.delete(`/api/medallion/${e.target.name}`)
+    console.log(res.data);
+    setReqArr([...res.data]);
+    console.log(reqArr);
+  }
   return (
     <div className="medallionPageWrapper">
       <div className="banner">
-        <img src="../images/requests-des-med.png" alt="" />
+        <img src="../images/request-des-med.png" alt="" />
       </div>
       {reqArr.length > 0 ? (
         <div className="requestswrapper">
@@ -58,7 +64,7 @@ const AcceptRequests = (props) => {
                   </div>
                   <div className="back">
                     <button className="accept" onClick = {e => acceptMedallion(e)}  name={e._id}>Accept</button>
-                    <button className="reject" onClick = {e => acceptMedallion(e)}  name={e._id}>Reject</button>
+                    <button className="reject" onClick = {e => rejectMedallion(e)}  name={e._id}>Reject</button>
                   </div>
                 </div>
               </div>

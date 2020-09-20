@@ -37,7 +37,7 @@ const Sendreq = props => {
     return (
         <div className="sendreq-wrapper">
             <div>
-            <h1>Use this page to send requests to another user!</h1>
+            <img src="../images/ship-medal-des.png" alt=""/>
                 <ul>{friendsArr.map(function(e){
                     return (
                         <div>
