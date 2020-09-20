@@ -70,13 +70,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 1rem;
 }
 
 .medallion__pic {
-    width: 16.5rem;
-    height: 16.5rem;
-    padding: .75rem;
+    width: 18rem;
+    height: 18rem;
+    padding: 1.5rem;
 }
 
 .clock__pic {}
@@ -96,9 +95,9 @@
 .medallion__name {
     font-size: 1.75rem;
     position: absolute;
-    width: 15rem;
-    top: 15rem;
-    left: 0rem;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .medallionContent {
