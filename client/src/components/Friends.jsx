@@ -11,6 +11,7 @@ const Friends = (props) => {
       try {
         let res = await axios.get("/api/friends");
         if (res.data.length) setFriends(res.data);
+        console.log(res.data)
         res = await axios.get("/api/friends/requests");
         if (res.data.length) setFriendRequests(res.data);
       } catch (err) {

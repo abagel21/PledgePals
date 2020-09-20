@@ -14,5 +14,41 @@
 }
 
 .medallion {
-    width: 40rem;
+    margin: 3rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .15);
+    border-radius: 1rem;
+}
+
+.flexWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+}
+
+.medallion__pic {
+    width: 16.5rem;
+    height: 16.5rem;
+    padding: .75rem;
+}
+
+.clock__pic {}
+
+.name__wrapper {
+    border-radius: 50%;
+    background-color: lightblue;
+    width: 15rem;
+    height: 15rem;
+    text-align: center;
+    position: relative;
+    margin: 0rem 2rem;
+}
+
+.medallion__name {
+    font-size: 1.75rem;
+    position: absolute;
+    width: 15rem;
+    top: 15rem;
+    left: 0rem;
 }

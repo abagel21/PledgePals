@@ -17,18 +17,18 @@ const Navbar = props => {
     }, [])
     const [user, setUser] = useState(null)
     return (
-        <div className="nav_container">
-            <Link to="/" className="heading title">Pledge Pals</Link>
-            <div className="authLinks">
-            {user ? (<div className="authLinks">
-            <Link className="navButton sendreqbutton" to = "/sendreq">Send Promises</Link>
-            <Link className="navButton friends" to = "/friends">Friends</Link>
-                <Link className="navButton requestbutton" to = "/requests">Requests</Link>
-            </div>) : (<div className="authLinks">
-                <Link className="navButton loginButton" to = "/login">Login</Link>
-                <Link className="navButton registerButton" to = "/register">Sign Up</Link>
-            </div>)}
-        </div>
+        <div className="navWrapper">
+            <img class="logo" src="../../images/logo.png" alt="logo" /> 
+            <nav>
+                <ul class="nav_links">
+                    <li><a href="#">Requests</a></li>
+                    <li><a href="#">Users</a></li>
+                    <li><a href="#">Friends</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Sign up</a></li>
+                </ul>
+            </nav>
+            <img class="navBanner" src="../../../images/banner-item.png"alt="banner" />
         </div>
     )
 }

@@ -18,8 +18,7 @@ const Sendreq = props => {
     function initReqArray(userReqs){
         console.log(userReqs.data);
         let temp = userReqs.data;
-        setFriendsArr([...friendsArr, ...temp]
-            )
+        setFriendsArr([...friendsArr, ...temp])
     }
     useEffect(function(){
         axios.get('/api/friends').then(function(data){

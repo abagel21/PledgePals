@@ -10,6 +10,10 @@ const MedallionSchema = new Schema({
         type: String,
         required: true
     },
+    recipientName: {
+        type: String,
+        required: true
+    },
     recipient: {
         type: Schema.Types.ObjectId,
         required: true
