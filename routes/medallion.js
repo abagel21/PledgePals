@@ -24,7 +24,7 @@ router.post('/create/:recipient', async(req, res, next) => {
         await recipient.save();
         res.json(newMedallion);
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })

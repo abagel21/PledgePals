@@ -4,9 +4,19 @@ import './styles/Sendreq.css'
 import axios from 'axios'
 
 const Sendreq = props => {
+    let count = 0;
     const [nameInput, setNameInput] = React.useState("");
     const [friendsArr, setFriendsArr] = React.useState([]);
 
+    function handleClick(event){
+        console.log(event.target.name);
+        
+        event.preventDefault();
+        axios.post('/api/medallion/create/'+event.target.name,{content:nameInput}, {headers: {"Content-Type": "application/json"}})
+        .then(function(data){
+            console.log(data);
+        })
+    }
 
     function handleChange(event){
         let x = event.target.value
@@ -28,18 +38,18 @@ const Sendreq = props => {
     return (
         <div className="sendreq-wrapper">
             <div>
+            <h1>Use this page to send requests to another user!</h1>
                 <ul>{friendsArr.map(function(e){
                     return (
                         <div>
-                        <h1>{e.name}
-                        <form>
-                    <input onChange={handleChange}></input>
-                    <button type="submit" className="btn btn-primary" >Send a request</button>
-                </form></h1>
+                            <form>
+                        <h1><h1 className="h1ele" name={e._id}>{e.name}</h1> 
+                    <input className="sendreqinp" onChange={handleChange}></input>
+                    <button name={e._id} type="submit" className="btn btn-lg btn-primary" onClick={handleClick}>Send a request</button>
+                        </h1></form>
                         </div>
                     )
                 })}</ul>
-                <h1>Use this page to send requests to another user!</h1>
             </div>
         </div>
 
