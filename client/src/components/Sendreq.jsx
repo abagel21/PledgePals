@@ -18,7 +18,7 @@ const Sendreq = props => {
     function initReqArray(userReqs){
         console.log(userReqs.data);
         let temp = userReqs.data;
-        setFriendsArr([...friendsArr, temp]
+        setFriendsArr([...friendsArr, ...temp]
             )
     }
     useEffect(function(){
@@ -32,15 +32,14 @@ const Sendreq = props => {
                 <ul>{friendsArr.map(function(e){
                     return (
                         <div>
-                        {console.log(e)}
-                        <button type="submit" className="btn btn-primary" >Send a request</button>
+                        <h1>{e.name}
+                        <form>
+                    <input onChange={handleChange}></input>
+                    <button type="submit" className="btn btn-primary" >Send a request</button>
+                </form></h1>
                         </div>
                     )
                 })}</ul>
-                <form>
-                    <input onChange={handleChange}></input>
-                    <button type="submit" className="btn btn-primary" >Send a request</button>
-                </form>
                 <h1>Use this page to send requests to another user!</h1>
             </div>
         </div>
