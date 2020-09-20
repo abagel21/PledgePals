@@ -30,7 +30,7 @@
     font-size: 2rem;
     border: none;
     padding: 1rem;
-    width: 10rem;
+    min-width: 10rem;
     height: 4.5rem;
     border-radius: 10px;
     transition: all .2s;

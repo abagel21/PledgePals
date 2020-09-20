@@ -27,11 +27,16 @@ const Friends = (props) => {
     setFriendQuery(e.target.value);
   };
 
-  const acceptRequest = (e) => {
+  const acceptRequest = async (e) => {
     console.log(e.target.parentNode.getAttribute("name"));
-    axios.put(`/api/friends/${e.target.parentNode.getAttribute("name")}`);
+    await axios.put(`/api/friends/${e.target.parentNode.getAttribute("name")}`);
+    window.location.reload();
+};
+  const rejectRequest = async (e) => {
+    console.log(e.target.parentNode.getAttribute("name"));
+    await axios.delete(`/api/friends/${e.target.parentNode.getAttribute("name")}`);
+    window.location.reload();
   };
-  const rejectRequest = (e) => {};
   return (
     <div className="friendsPageWrapper" data-status={modalVisible}>
       <FriendModal visible={modalVisible} setVisible={setModalVisible} />
