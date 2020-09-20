@@ -66,12 +66,14 @@ router.get("/users", async(req, res, next) => {
     res.json(users);
 })
 
+
 /**
  * Make a friend request
  */
 router.post("/friends/:user_id", (req, res, next) => {
     const newFriend = User.findById(req.param.user_id);
     const user = User.findById(req.user._id);
+    if (user.friends.includes(newFriend._id)) return res.status(400).send();
     newFriend.friendRequests.push(user._id);
     user.sentFriendRequests.push(newFriend._id);
     user.save();
