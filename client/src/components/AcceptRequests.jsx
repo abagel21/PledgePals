@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import "./styles/Requests.css";
 import axios from "axios";
 
-const Requests = (props) => {
+const AcceptRequests = (props) => {
   useEffect(() => {
     async function wrapperFunc() {
       console.log("GETTING MEDALLIONS");
-      const res = await axios.get("/api/medallion");
+      const res = await axios.get("/api/medallion/requests");
       console.log(res.data);
       setReqArr(res.data);
     }
@@ -15,9 +15,18 @@ const Requests = (props) => {
   }, []);
   const [reqArr, setReqArr] = React.useState([]);
 
-  async function completeMedallion(e) {
-    axios.put(`/api/medallion/complete/${e.target.name}`)
-  }
+  // function initializeArray(data){
+  //     let tempArr = [];
+  //     for(let i = 0; i < data.length; i++){
+  //         tempArr.push(new req(data[i].img, data[i].name,data[i].date, img));
+  //     }
+  //     setReqArr(function(prev){
+  //         return [tempArr];
+  //     });
+  // }
+  // useEffect(() =>{
+  //     axios.get('/getdata').then();
+  // })
   return (
     <div className="medallionPageWrapper">
       <div className="banner">
@@ -53,7 +62,7 @@ const Requests = (props) => {
                     <h1>{e.medal}</h1>
                   </div>
                   <div className="back">
-                    <button className="complete" onClick = {e => completeMedallion(e)} name={e._id}>Complete</button>
+                    <button className="complete">Complete</button>
                   </div>
                 </div>
               </div>
@@ -78,5 +87,5 @@ function req(image, name, date, medal) {
   this.medal = medal;
 }
 
-Requests.propTypes = {};
-export default Requests;
+AcceptRequests.propTypes = {};
+export default AcceptRequests;

@@ -104,11 +104,11 @@ router.get('/requests', async(req, res, next) => {
             const medallions = await Promise.all(user.pendingMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
                 console.log(medal);
-                return {...medal, "name": user.name };
+                return medal;
             }))
             res.json(medallions);
         } catch (err) {
-            console.error(err.message);
+            console.error(err);
             res.status(500).send("Server Error");
         }
     })
@@ -122,7 +122,7 @@ router.get('/pending', async(req, res, next) => {
             const medallions = await Promise.all(user.sentPendingMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
                 console.log(medal);
-                return {...medal, "name": user.name };
+                return medal;
             }))
             res.json(medallions);
         } catch (err) {
@@ -160,7 +160,7 @@ router.get('/completed', async(req, res, next) => {
             const medallions = await Promise.all(user.completedMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
                 console.log(medal);
-                return {...medal, "name": user.name };
+                return medal;
             }))
             res.json(medallions);
         } catch (err) {
@@ -178,7 +178,7 @@ router.get('/sent', async(req, res, next) => {
             const medallions = await Promise.all(user.sentMedallions.map(async(medallion_id) => {
                 const medal = await Medallion.findById(medallion_id)
                 console.log(medal);
-                return {...medal, "name": user.name };
+                return medal;
             }))
             console.log(medallions)
             res.json(medallions);
@@ -197,7 +197,7 @@ router.get('/sent/completed', async(req, res, next) => {
         const medallions = await Promise.all(user.completedSentMedallions.map(async(medallion_id) => {
             const medal = await Medallion.findById(medallion_id)
             console.log(medal);
-            return {...medal, "name": user.name };
+            return medal;
         }))
         res.json(medallions);
     } catch (err) {

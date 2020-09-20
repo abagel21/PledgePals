@@ -1,27 +1,37 @@
-.home-div{
-    color:white;
+.home-div {
+    color: white;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
-    margin-top: 200px;
 }
 
-.wave{
+.wave {
     position: absolute;
-    top: 150px;
-    left:-140px;
+    top: 10rem;
+    left: -140px;
 }
 
-body{
+body {
     background-color: white;
-    color:black;
+    color: black;
 }
 
-.deer{
+.deer {
     position: absolute;
-    left: 30%;
-    top: 30%;
+    left: 55%;
+    top: 60%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
+.homeHeading {
+    color: transparent;
+    font-size: 7rem;
+    font-weight: 700;
+    height: 15rem;
+    text-align: center;
+    margin-top: 5rem;
+    background: linear-gradient(to right, rgb(66, 66, 255), rgb(151, 106, 255));
+    -webkit-background-clip: text;
+}
