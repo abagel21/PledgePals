@@ -57,7 +57,8 @@ const AcceptRequests = (props) => {
                     <h1>{e.medal}</h1>
                   </div>
                   <div className="back">
-                    <button className="complete" onClick = {e => acceptMedallion(e)}  name={e._id}>Complete</button>
+                    <button className="accept" onClick = {e => acceptMedallion(e)}  name={e._id}>Accept</button>
+                    <button className="reject" onClick = {e => acceptMedallion(e)}  name={e._id}>Reject</button>
                   </div>
                 </div>
               </div>

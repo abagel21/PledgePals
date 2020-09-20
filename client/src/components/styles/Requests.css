@@ -129,12 +129,42 @@
     border-radius: 1.5rem;
 }
 
-.complete:hover {
+.accept {
+    font-size: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    border: none;
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .1);
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+.reject {
+    font-size: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(204, 53, 53);
+    border: none;
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .1);
+    padding: 1rem;
+    border-radius: 1.5rem;
+}
+
+.complete:hover,
+.accept:hover,
+.reject:hover {
     box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .2);
     transform: translate(-50%, -51%);
 }
 
-.complete:active {
+.complete:active,
+.accept:active,
+.reject:active {
     box-shadow: 0 .25rem .25rem rgba(0, 0, 0, .05);
     transform: translate(-50%, -49%);
 }

@@ -42,11 +42,11 @@ router.put('/:medallion_id', async(req, res, next) => {
         if (sentPendingMedallions.length == sender.sentPendingMedallions) res.status(400).send();
         sender.sentPendingMedallions = sentPendingMedallions;
         recipient.pendingMedallions = await recipient.pendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
-        sender.sentMedallions.push(medallion._id);
-        recipient.receivedMedallions.push(medallion._id);
+        await sender.sentMedallions.push(medallion._id);
+        await recipient.receivedMedallions.push(medallion._id);
         await sender.save();
         await recipient.save();
-        res.status(200).json(await Promise.all(recipient.pendingMedallions.map(async medal => {
+        res.status(200).json(await Promise.all(await recipient.pendingMedallions.map(async medal => {
             return await Medallion.findById(medal);
         })));
     } catch (err) {
@@ -66,11 +66,11 @@ router.put('/complete/:medallion_id', async(req, res, next) => {
         const recipient = await User.findById(medallion.recipient);
         sender.sentMedallions = await sender.sentMedallions.filter(x => x._id.toString() != req.params.medallion_id);
         recipient.receivedMedallions = await recipient.receivedMedallions.filter(x => x._id.toString() != req.params.medallion_id);
-        sender.completedSentMedallions.push(medallion._id);
-        recipient.completedMedallions.push(medallion._id);
+        await sender.completedSentMedallions.push(medallion._id);
+        await recipient.completedMedallions.push(medallion._id);
         await sender.save();
         await recipient.save();
-        res.status(200).json(await Promise.all(req.user.receivedMedallions.map(async medal => {
+        res.status(200).json(await Promise.all(await req.user.receivedMedallions.map(async medal => {
             return await Medallion.findById(medal);
         })));
     } catch (err) {
@@ -92,7 +92,9 @@ router.delete('/:medallion_id', async(req, res, next) => {
         recipient.pendingMedallions = recipient.pendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
         await sender.save();
         await recipient.save();
-        res.status(200).send();
+        res.status(200).json(await Promise.all(await recipient.pendingMedallions.map(async medal => {
+            return await Medallion.findById(medal);
+        })));
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
