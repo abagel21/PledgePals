@@ -9,3 +9,8 @@ Pledge Pals is a comprehensive platform created during HackMIT designed to revol
 
 ## Demo
 - A demo is hosted at pledgepals.herokuapp.com
+
+## Use
+- Download the files and unzip
+- npm i && npm i --prefix client 
+- npm run dev
