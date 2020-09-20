@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import './styles/Home.css';
 
 const Home = props => {
@@ -15,8 +14,5 @@ const Home = props => {
     )
 }
 
-Home.propTypes = {
-
-}
 
 export default Home

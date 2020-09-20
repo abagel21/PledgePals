@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./styles/Friends.css";
 import FriendModal from "./FriendModal";
-import $ from "jquery";
-import PropTypes from "prop-types";
 
 const Friends = (props) => {
   useEffect(() => {
@@ -109,6 +107,5 @@ const Friends = (props) => {
   );
 };
 
-Friends.propTypes = {};
 
 export default Friends;

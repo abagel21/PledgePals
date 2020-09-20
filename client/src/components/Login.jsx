@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import {Redirect} from 'react-router-dom'
-import PropTypes from 'prop-types'
 import axios from "axios"
 import "./styles/Auth.css"
 
@@ -43,10 +42,6 @@ const Login = props => {
     </div>)}
     </div>
     )
-}
-
-Login.propTypes = {
-
 }
 
 export default Login

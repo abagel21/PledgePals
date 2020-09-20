@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import "./styles/Requests.css";
 import axios from "axios";
 
@@ -81,5 +80,4 @@ function req(image, name, date, medal) {
   this.medal = medal;
 }
 
-Requests.propTypes = {};
 export default Requests;

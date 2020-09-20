@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import './styles/Sendreq.css'
 import axios from 'axios'
 
@@ -52,10 +51,6 @@ const Sendreq = props => {
         </div>
 
     )
-}
-
-Sendreq.propTypes = {
-
 }
 
 export default Sendreq;

@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import PropTypes from 'prop-types'
 import $ from 'jquery';
 import axios from 'axios';
 
@@ -40,10 +39,6 @@ const FriendModal = ({visible, setVisible}) => {
             </div>
         </div>
     )
-}
-
-FriendModal.propTypes = {
-
 }
 
 export default FriendModal

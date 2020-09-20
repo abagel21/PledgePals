@@ -46,19 +46,14 @@ passport.deserializeUser(async(id, done) => {
 });
 
 const PORT = process.env.PORT || 80;
+console.log("HERE")
+    //Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+    //Set static folder
+    app.use(express.static('client/build'));
 
-//production static serving from client side
-if (process.env.NODE_ENV === "production") {
-    console.log("SERVING STATIC FROM CLIENT/BUILD")
-    app.use(express.static("client/build"));
-    console.log(path.resolve(__dirname, "client", "build", "index.html"))
-    app.get("/*", (req, res) => {
-        console.log('sending file')
-        try {
-            res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-        } catch (err) {
-            res.status(500).send('Server Error With Backup React Routing Fix')
-        }
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     });
 }
 

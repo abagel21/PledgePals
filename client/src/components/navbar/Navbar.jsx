@@ -18,21 +18,21 @@ const Navbar = props => {
     const [user, setUser] = useState(null)
     return (
         <div className="navWrapper">
-            <img class="logo" src="../../images/logo.png" alt="logo" /> 
+            <img className="logo" src="../../images/logo.png" alt="logo" /> 
             <nav>
-                {user ? <ul class="nav_links">
+                {user ? <ul className="nav_links">
                 <li><Link to="/">Home</Link></li>
                     <li><Link to="/sendreq">Make Promises</Link></li>
                     <li><Link to="/requests">Keep Promises</Link></li>
                     <li><Link to="/request_accept">Accept Promises</Link></li>
                     <li><Link to="/friends">Friends</Link></li>
-                </ul> : <ul class="nav_links">
+                </ul> : <ul className="nav_links">
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/login">Login</Link></li>
                     <li><Link to="/register">Sign up</Link></li>
                 </ul>}
             </nav>
-            <img class="navBanner" src="../../../images/banner-item.png"alt="banner" />
+            <img className="navBanner" src="../../../images/banner-item.png"alt="banner" />
         </div>
     )
 }
