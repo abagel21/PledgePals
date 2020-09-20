@@ -4,7 +4,6 @@ import './styles/Sendreq.css'
 import axios from 'axios'
 
 const Sendreq = props => {
-    let count = 0;
     const [nameInput, setNameInput] = React.useState("");
     const [friendsArr, setFriendsArr] = React.useState([]);
 
