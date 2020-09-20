@@ -16,6 +16,7 @@ const Sendreq = props => {
         .then(function(data){
             console.log(data);
         })
+        document.querySelector(".sendreqinp").value = "";
     }
 
     function handleChange(event){
@@ -37,20 +38,18 @@ const Sendreq = props => {
     }, []);
     return (
         <div className="sendreq-wrapper">
-            <div>
-            <img src="../images/ship-medal-des.png" alt=""/>
+            <img src="../images/ship-medal-des.png" alt="" className="sendImg"/>
                 <ul>{friendsArr.map(function(e){
                     return (
                         <div>
                             <form>
-                        <h1><h1 className="h1ele" name={e._id}>{e.name}</h1> 
-                    <input className="sendreqinp" onChange={handleChange}></input>
-                    <button name={e._id} type="submit" className="btn btn-lg btn-primary" onClick={handleClick}>Send a request</button>
-                        </h1></form>
+                        <div className="reqWrapper"><h1 className="h1ele" name={e._id}>{e.name}</h1> 
+                    <input className="sendreqinp" onChange={handleChange} placeholder="Write a Request"></input>
+                    <button name={e._id} type="submit" className="reqButton" onClick={handleClick}>Send</button>
+                        </div></form>
                         </div>
                     )
                 })}</ul>
-            </div>
         </div>
 
     )

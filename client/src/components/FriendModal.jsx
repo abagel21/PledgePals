@@ -23,6 +23,7 @@ const FriendModal = ({visible, setVisible}) => {
     }
     const addFriend = async (e) => {
         // send friend request
+        setVisible("false");
         const res = await axios.post(`/api/friends/${e.target.name}`)
     }
     return (

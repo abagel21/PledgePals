@@ -268,6 +268,7 @@ button:focus {
     text-align: center;
     position: relative;
     margin: 0rem 2rem;
+    background-image: url("pfp_1.png");
 }
 
 .friendsWrapper div .friendName {
