@@ -39,7 +39,7 @@ router.put('/:medallion_id', async(req, res, next) => {
         const sender = await User.findById(medallion.sender);
         const recipient = await User.findById(medallion.recipient);
         const sentPendingMedallions = await sender.sentPendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
-        if (sentPendingMedallions.length == sender.sentPendingMedallions) res.status(400).send();
+        // if (sentPendingMedallions.length == sender.sentPendingMedallions) res.status(400).send();
         sender.sentPendingMedallions = sentPendingMedallions;
         recipient.pendingMedallions = await recipient.pendingMedallions.filter(x => x._id.toString() != req.params.medallion_id.toString());
         await sender.sentMedallions.push(medallion._id);
