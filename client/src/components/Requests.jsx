@@ -16,7 +16,10 @@ const Requests = (props) => {
   const [reqArr, setReqArr] = React.useState([]);
 
   async function completeMedallion(e) {
-    axios.put(`/api/medallion/complete/${e.target.name}`)
+    const res = await axios.put(`/api/medallion/complete/${e.target.name}`)
+    console.log(res.data);
+    setReqArr([...res.data]);
+    console.log(reqArr);
   }
   return (
     <div className="medallionPageWrapper">

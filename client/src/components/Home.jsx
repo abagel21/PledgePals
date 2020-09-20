@@ -9,6 +9,7 @@ const Home = props => {
                 <h1 className="homeHeading">Pledge Pals</h1>
                 <img src="../images/waveback.png" className="wave" alt="asdf"/>
                 <img src="../images/promisedeer.png" className="deer" alt="asdf"/>
+                <img src="pledge_home.png" className="pledge_home" alt="pledge_home"/>
             </div>
         </div>
 

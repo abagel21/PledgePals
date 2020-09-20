@@ -1,28 +1,13 @@
 .home-div {
-    color: white;
+    color: #ffffff;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.wave {
+.pledge_home {
     position: absolute;
-    top: 10rem;
-    left: -140px;
-}
-
-body {
-    background-color: white;
-    color: black;
-}
-
-.deer {
-    position: absolute;
-    left: 55%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
 }
 
 .homeHeading {

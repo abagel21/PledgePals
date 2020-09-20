@@ -45,7 +45,7 @@ router.put('/:medallion_id', async(req, res, next) => {
         recipient.receivedMedallions.push(medallion);
         await sender.save();
         await recipient.save();
-        res.status(200).send();
+        res.status(200).json(req.user.pendingMedallions);
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
@@ -67,7 +67,7 @@ router.put('/complete/:medallion_id', async(req, res, next) => {
         recipient.completedMedallions.push(medallion);
         await sender.save();
         await recipient.save();
-        res.status(200).send();
+        res.status(200).json(req.user.receivedMedallions);
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
