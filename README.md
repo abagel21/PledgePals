@@ -8,7 +8,7 @@ Pledge Pals is a comprehensive platform created during HackMIT designed to revol
 - MongoDB
 
 ## Demo
-- A demo is hosted at pledgepals.herokuapp.com
+- A demo is hosted on <a href="http://pledgepals.herokuapp.com?s=200" target="_blank">`heroku`</a>
 
 ## Use
 - Download the files and unzip
