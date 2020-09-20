@@ -45,7 +45,7 @@ const Requests = (props) => {
                   alt="s"
                 />
                 <div className="name__wrapper" name={e._id}>
-                  <label className="medallion__name">{e.name}</label>
+                  <label className="medallion__name">{e.senderName}</label>
                 </div>
                 <img
                   className="clock__pic"
