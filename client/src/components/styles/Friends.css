@@ -11,13 +11,13 @@ button:focus {
 .addFriendButton {
     width: 15rem;
     height: 15rem;
-    border: 1px gray;
     border-radius: 50%;
     background-color: white;
     transition: all .2s;
     text-align: center;
     position: relative;
     cursor: pointer;
+    border: 1px solid lightgray;
 }
 
 .friendsBanner {
@@ -92,18 +92,27 @@ button:focus {
 
 .friendsWrapper {
     display: flex;
+    justify-content: center;
     align-items: center;
     padding: 1rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    min-height: 20%;
 }
 
 .friendRequestsWrapper {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     padding: 1rem;
     padding-left: 3rem;
     padding-right: 3rem;
+    min-height: 20%;
+}
+
+.friendRequests {
+    display: flex;
 }
 
 [data-status='true'] {
@@ -181,4 +190,99 @@ button:focus {
 .userResults button:active {
     box-shadow: 0 .1rem .1rem rgba(0, 0, 0, .02);
     transform: translate(1px, 0px);
+}
+
+.friendRequests div {
+    border-radius: 50%;
+    background-color: lightblue;
+    width: 15rem;
+    height: 15rem;
+    text-align: center;
+    position: relative;
+    margin: 0rem 2rem;
+}
+
+.friendRequests div .friendName {
+    font-size: 1.75rem;
+    position: absolute;
+    width: 15rem;
+    top: 15rem;
+    left: 0rem;
+}
+
+.friendRequests div .friendAccept {
+    font-size: 1.6rem;
+    position: absolute;
+    width: 15rem;
+    top: 18rem;
+    left: 8.5rem;
+    background-color: rgb(48, 138, 48);
+    width: 6rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .15);
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.friendRequests div .friendReject {
+    font-size: 1.6rem;
+    position: absolute;
+    width: 15rem;
+    top: 18rem;
+    left: 0rem;
+    background-color: rgb(199, 56, 56);
+    width: 6rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, .15);
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.friendRequests div .friendAccept:hover,
+.friendRequests div .friendReject:hover {
+    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .2);
+    transform: translate(-1px, -1px);
+}
+
+.friendRequests {
+    margin-top: 2rem;
+}
+
+.friendRequestsWrapper h3 {
+    font-size: 3rem;
+    color: white;
+    background-color: rgb(187, 187, 187);
+    width: 20rem;
+    text-align: center;
+    display: block;
+    margin-top: 5rem;
+    border-radius: 15px;
+}
+
+.friendsWrapper div {
+    border-radius: 50%;
+    background-color: lightblue;
+    width: 15rem;
+    height: 15rem;
+    text-align: center;
+    position: relative;
+    margin: 0rem 2rem;
+}
+
+.friendsWrapper div .friendName {
+    font-size: 1.75rem;
+    position: absolute;
+    width: 15rem;
+    top: 15rem;
+    left: 0rem;
+}
+
+.friendsError {
+    width: 15rem;
+    height: 15rem;
+    background-color: lightcoral;
+    border-radius: 50%;
+    margin-left: 1.5rem;
+    text-align: center;
+    padding: 3rem;
 }

@@ -5,14 +5,8 @@ import axios from 'axios'
 
 const Sendreq = props => {
     const [nameInput, setNameInput] = React.useState("");
-    const [currReqs, setCurrReqs] = React.useState([]);
-    function sendreq(event){
-        event.preventDefault();
-        if(nameInput == ""){
-            return;
-        }
-        axios.post('/create/' + nameInput,{content:"sdf"},{headers: {"Content-Type":"application/json"}});
-    }
+    const [friendsArr, setFriendsArr] = React.useState([]);
+
 
     function handleChange(event){
         let x = event.target.value
@@ -23,8 +17,8 @@ const Sendreq = props => {
 
     function initReqArray(userReqs){
         console.log(userReqs.data);
-        setCurrReqs(function(prev){
-            return prev;
+        setFriendsArr(function(prev){
+            return [userReqs.data];
         })
     }
     useEffect(function(){
@@ -35,12 +29,16 @@ const Sendreq = props => {
     return (
         <div className="sendreq-wrapper">
             <div>
+                <ul>{friendsArr.map(function(e){
+                    return (
+                        <h1></h1>
+                    )
+                })}</ul>
                 <form>
                     <input onChange={handleChange}></input>
                     <button type="submit" className="btn btn-primary" onClick={sendreq}>Send a request</button>
                 </form>
                 <h1>Use this page to send requests to another user!</h1>
-
             </div>
         </div>
 

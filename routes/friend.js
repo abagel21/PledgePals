@@ -9,7 +9,11 @@ const User = require("../models/User")
 router.get("/", async(req, res, next) => {
     try {
         const user = await User.findById(req.user._id);
-        res.json(user.friends);
+        const friends = await Promise.all(user.friends.map(async(friend_id) => {
+            const friendUser = await User.findById(friend_id);
+            return friendUser;
+        }))
+        res.json(friends);
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
@@ -69,7 +73,7 @@ router.put("/:user_id", async(req, res, next) => {
         await friend.save();
         res.status(200).send();
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send("Server Error");
     }
 })
