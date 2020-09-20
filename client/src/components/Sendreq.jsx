@@ -36,7 +36,7 @@ const Sendreq = props => {
                 })}</ul>
                 <form>
                     <input onChange={handleChange}></input>
-                    <button type="submit" className="btn btn-primary" onClick={sendreq}>Send a request</button>
+                    <button type="submit" className="btn btn-primary" onClick={e => Sendreq()}>Send a request</button>
                 </form>
                 <h1>Use this page to send requests to another user!</h1>
             </div>

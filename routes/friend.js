@@ -11,7 +11,7 @@ router.get("/", async(req, res, next) => {
         const user = await User.findById(req.user._id);
         const friends = await Promise.all(user.friends.map(async(friend_id) => {
             const friendUser = await User.findById(friend_id);
-            return friendUser;
+            return { name: friendUser.name, _id: friendUser._id };
         }))
         res.json(friends);
     } catch (err) {
