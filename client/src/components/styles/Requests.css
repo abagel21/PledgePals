@@ -1,4 +1,18 @@
-.requestswrapper{
-    margin-top: 120px;
-    height:500px;
+.requestswrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner {
+    width: 100%;
+    margin-top: 4rem;
+}
+
+.banner img {
+    width: 100%;
+}
+
+.medallion {
+    width: 40rem;
 }

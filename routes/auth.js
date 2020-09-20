@@ -62,7 +62,7 @@ router.get("/", (req, res, next) => {
  * Return all users
  */
 router.get("/users", async(req, res, next) => {
-    const users = await User.find();
+    const users = await User.find({ _id: { $ne: req.user._id } });
     res.json(users);
 })
 
